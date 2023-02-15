@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    border: 5px black solid;
+}
+
+.start-title {
+    text-align: center;
+    font-size: 4rem;
+    text-decoration: underline;
+    justify-content: center;
+    margin:auto;
+    flex-grow: 2;
+}
+
+.start-button {
+    border: 2px black solid;
+    border-radius: 10px;
+    margin:auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    margin-left: 45%;
+}
+
+.reset-button {
+    border: 2px black solid;
+    border-radius: 10px;
+    margin:auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    float: right;
+    margin-right: 10%;
+}
+
+section {
+    display: flex;
+    justify-content: space-around;
+    border: 3px red solid;
+}
+
+.timer {
+    justify-content: flex-end;
+}
+
+.score-card {
+    justify-content: flex-start
+}
+
+.quiz-area {
+
+}
