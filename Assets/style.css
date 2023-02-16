@@ -2,31 +2,36 @@
     box-sizing: border-box;
 }
 
+/* Used vh in min-height to force the body to cover 100% of the screen*/
 body {
     padding: 0;
     margin: 0;
+    min-height: 100vh;
 }
 
 header {
-    border: 5px black solid;
+    background-color: darkslateblue;
 }
 
 .start-title {
     text-align: center;
     font-size: 4rem;
     text-decoration: underline;
+    color: gray;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     justify-content: center;
     margin:auto;
-    flex-grow: 2;
 }
 
-.start-button {
+.begin-button {
     border: 2px black solid;
     border-radius: 10px;
+    background-color: darkslategray;
     margin:auto;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     cursor: pointer;
     margin-left: 45%;
 }
@@ -34,29 +39,59 @@ header {
 .reset-button {
     border: 2px black solid;
     border-radius: 10px;
+    background-color: darkslategray;
     margin:auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
     font-size: 2.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     cursor: pointer;
-    float: right;
-    margin-right: 10%;
 }
 
-section {
+.stats-area {
     display: flex;
     justify-content: space-around;
-    border: 3px red solid;
+    border-top: 3px black solid;
+    border-bottom: 3px black solid;
+    background-color:darkslateblue;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .timer {
-    justify-content: flex-end;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.score-card {
-    justify-content: flex-start
+h1,
+h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
+.card2 {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-left: 13%;
+    background-color: darkorange;
+}
+
+.card1 {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto; 
+    background-color: darkorange;
+}
+
+/* Odd vh height here so the quiz area will fill the screen*/
 .quiz-area {
+    background-color:darkslateblue;
+    flex: 1;
+    flex-direction: column;
+    height:71.6vh;
+}
 
+/* Leaving blank but here for later*/
+.quiz-card {
 }

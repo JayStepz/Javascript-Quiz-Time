@@ -10,12 +10,20 @@
 <body>
     <header>
         <div class="start-title">JS Fundamentals Quiz</div>
-        <button class="start-button">Begin</button>
-        <button class="reset-button">Reset</button>
+        <button class="begin-button">Begin</button>
     </header>
-    <section>
-        <div class="score-card">SCORE</div>
-        <div class="timer">TIMER</div>
+    <section class="stats-area">
+        <div class="card1">
+            <div class="score-card">
+                <h1>Wins: <span class="win">0</span></h1>
+                <h1>Losses: <span class="loss">0</span></h1>
+            </div>
+        </div>
+        <div class="card2">
+            <div class="timer">60</div>
+            <h2>seconds remaining</h2>
+        </div>
+            <button class="reset-button">Reset Score</button>
     </section>
     <section class="quiz-area">
         <div class="quiz-card"></div>
