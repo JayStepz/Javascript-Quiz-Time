@@ -12,6 +12,65 @@ var timerTime;
 var didWin = false;
 var corrAns;
 
+const QA1 = {
+    question: "Is JavaScript case-sensitive?",
+    answers: {
+    a: "Yes",
+    b: "No",
+    c: "Only variables",
+    d: "Only functions"
+    },
+    correctAnswer: "a"
+}
+
+const QA2 = {
+    question:"How do you add a comment in JavaScript?",
+    answers: {
+    a:"<!--Comment Here-->",
+    b:"//Comment Here",
+    c:"#Comment Here",
+    d:"(Comment Here)",
+    },
+    correctAnswer: "b"
+}
+
+const QA3 = {
+    question:"Which one of these is not a data type?",
+    answers: {
+    a:"String",
+    b:"Object",
+    c:"Prompt",
+    d:"Boolean",
+    },
+    correctAnswer: "c"
+}
+
+const QA4 = {
+    question:"Arrays in Javascript can be used to store:",
+    answers: {
+    a:"Strings and Numbers",
+    b:"Other arrays",
+    c:"Booleans",
+    d:"All of the above",
+    },
+    correctAnswer: "d"
+}
+
+const QA5 = {
+    question:"An if/then statement must be wrapped in one of these.",
+    answers: {
+    a:"()",
+    b:"{}",
+    c:"[]",
+    d:"<>",
+    },
+    correctAnswer: "b"
+}
+
+function displayQA {
+    
+}
+
 function init() {
     getWins();
     getLosses();
