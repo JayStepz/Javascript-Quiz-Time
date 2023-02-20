@@ -84,8 +84,29 @@ function displayQA() {
         
         // Displays answer text inside the buttons
         button.textContent = QAs[count].answers[Object.keys(QAs[count].answers)[i]];
+        
+        // Adds click event listener to answer buttons
+        button.addEventListener("click", function(event) {
+            // Gets id of the clicked button
+            var choiceAnswer = event.target.id;
+            // Gets correct answer from current question
+            var correctAnswer = QAs[count].correctAnswer;
+            // Checks if correct or incorrect and displays related text
+            if (choiceAnswer === correctAnswer && count < 4) {
+                correct.textContent = "Correct";
+                count++;
+                displayQA();
+            } 
+            if (choiceAnswer !== correctAnswer && count < 4) {
+                incorrect.textContent = "Incorrect";
+                count++;
+                timerCount = timerCount - 12;
+                displayQA();
+            }
+        });
     }
 }
+
 // When Begin button is clicked
 function beginQuiz() {
     // Timer starts
@@ -110,22 +131,31 @@ function timerStart() {
         timer.textContent = timerCount + " seconds remaining";
         // If any time is left over and there is at least 1 answer...
         if (timerCount > 0 && ans > 0) {
-            if (timerCount >0) {
+            if (timerCount > 0) {
             clearInterval(timerElement);
             timer.textContent = "You finished!";
-            //finQuiz();
+            finQuiz();
             }
         }
         // If there is no time left...
-        if (timerCount === 0) {
+        if (timerCount === 0 && timerCount < 0) {
             clearInterval(timerElement);
             timer.textContent = "Time is up!";
+        }
+        // Disable Begin button after first click
+        if (timerCount < 3) {
+            beginButton.addEventListener("click", function(event) {
+                event.target.disabled = true;
+            });
         }
     }, 1000);
 }
 
 // For logging the score and user input
-//finQuiz();
+finQuiz() {
+    // The score will be the time remaining
+    var score = timerCount;
+};
 
 // Establishes the timer box when the page is loaded
 document.addEventListener('DOMContentLoaded', function() {
