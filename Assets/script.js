@@ -104,7 +104,11 @@ function displayQA() {
     }
 }
 
-// function displayScores() {}
+/*function displayScores() {
+    if (count === 5) {
+
+    }
+}*/
 
 // When Begin button is clicked
 function beginQuiz() {
@@ -122,6 +126,10 @@ function resetQuiz() {
 
     // Clears quiz card
     quiz.textContent = "";
+
+    // Clears div class "correct" and "incorrect"
+    correct.textContent = "";
+    incorrect.textContent = "";
 }
 
 // For logging the score and user input

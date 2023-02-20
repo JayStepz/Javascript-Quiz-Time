@@ -130,3 +130,15 @@ font-weight: bold;
 #a:hover, #b:hover, #c:hover, #d:hover {
     background-color:cornflowerblue;
 }
+
+.correct, .incorrect {
+    background-color:blue;
+    color:white;
+    font-size: 2rem;
+    border: black solid 2px;
+    height: max-content;
+    width: max-content;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:5px;
+}
