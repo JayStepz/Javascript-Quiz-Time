@@ -7,9 +7,11 @@ var viewButton = document.querySelector(".view-scores");
 var quiz = document.querySelector(".quiz-card");
 var timerCount = 3;
 var count = 0;
+var ans;
 var corrAns;
+var wrongAns;
 
- var QAs = [
+var QAs = [
 {
     question: "Is JavaScript case-sensitive?",
     answers: {
@@ -66,60 +68,69 @@ var corrAns;
 }
 ]
 
-
-
+// For displaying the questions and answer choices after begin button click
 function displayQA() {
+    // Displays the question
     quiz.textContent = QAs[count].question;
 
-    QAs[count].answer.forEach(function(answer, index) {
+    // Creates a loop to display the answer choices
+    for (var i = 0; i < 4; i++) {
+        // Creates each answer button
         var button = document.createElement("button");
         quiz.appendChild(button);
-        button.setAttribute(id, "a" + index);
-        console.log(button);
-    }); 
-    //(var i = 0; i < 4; i++) {
-        //var button = document.createElement("button");
-        //quiz.appendChild(button);
-        //button.innerHTML = "TEST";
-    //}
-    
-    /*var chosenQA = QAs[Math.floor(Math.random() * QAs.length)];
-
-    QAs.forEach(QAs => {
         
-    }); (var i = 0; i < QAs.length; i++) {
-
-    }*/
+        // Assigns button ids to answer letters
+        button.id = Object.keys(QAs[count].answers)[i];
+        
+        // Displays answer text inside the buttons
+        button.textContent = QAs[count].answers[Object.keys(QAs[count].answers)[i]];
+    }
+}
+// When Begin button is clicked
+function beginQuiz() {
+    // Timer starts
+    timerStart()
+    // First question displayed
+    displayQA()
 }
 
-function beginQuiz() {
-    timerStart()
-    displayQA()
+function resetQuiz() {
+    // Clear and reset timer
+    clearInterval(timerCount);
+    timerCount = 3;
+    timer.textContent = timerCount + " seconds remaining";
+
+    // Clears quiz card
+    quiz.textContent = "";
 }
 
 function timerStart() {
     timerElement = setInterval(function() {
         timerCount --;
         timer.textContent = timerCount + " seconds remaining";
-
-        /*if (timerCount >= 0) {
+        // If any time is left over and there is at least 1 answer...
+        if (timerCount > 0 && ans > 0) {
             if (timerCount >0) {
             clearInterval(timerElement);
+            timer.textContent = "You finished!";
             //finQuiz();
             }
-        }*/
-
+        }
+        // If there is no time left...
         if (timerCount === 0) {
             clearInterval(timerElement);
             timer.textContent = "Time is up!";
-            //endQuiz();
         }
     }, 1000);
 }
 
+// For logging the score and user input
 //finQuiz();
 
-//endQuiz();
+// Establishes the timer box when the page is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    timer.textContent = timerCount + " seconds remaining";
+}, false);
 
 beginButton.addEventListener("click", beginQuiz);
-//resetButton.addEventListener("click", )
+resetButton.addEventListener("click", resetQuiz);
