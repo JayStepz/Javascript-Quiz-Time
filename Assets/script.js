@@ -104,11 +104,14 @@ function displayQA() {
     }
 }
 
-/*function displayScores() {
-    if (count === 5) {
+function displayScores() {
+    var  initialsForm = document.createElement("form");
 
-    }
-}*/
+    initialsForm.innerHTML = '<label for="initials">Enter your initials:</label> <input type="text" id="initials" name="initials" required>';
+    
+    quiz.appendChild(initialsForm);
+    console.log(score);
+}
 
 // When Begin button is clicked
 function beginQuiz() {
@@ -132,31 +135,44 @@ function resetQuiz() {
     incorrect.textContent = "";
 }
 
+/* function clearStorage() {
+    localStorage.clear();
+}*/
+
 // For logging the score and user input
 function finQuiz() {
     // Stop the timer
     clearInterval(timerElement);
     timer.textContent = "You finished!";
+    quiz.textContent = "";
 
     // The score will be the time remaining
     var score = timerCount;
-    console.log(score);
 
+    // Log score to local storage
+    localStorage.setItem("name", score);
+    console.log(score);
+    
     // Display Scores page
-    // displayScores();
+    displayScores();
 };
 
 function timerStart() {
     timerElement = setInterval(function(event) {
+        // timerCount decreases by 1 each second
         timerCount --;
+        // timerCount is displayed with message and kept updated
         timer.textContent = timerCount + " seconds remaining";
         // If any time is left over and all questions are answered
         if (timerCount > 0 && count === QAs.length) {
+            // If the questions are answered and there is time remaining, the quiz finishes
             finQuiz();
         }
-        // If there is no time left...
+        // If there is no time left and not all the questions are answered
         if (timerCount <= 0 && count !== QAs.length) {
+            // Timer stops
             clearInterval(timerElement);
+            // Fail messages display
             timer.textContent = "Time is up!";
             quiz.textContent = "Click Reset Quiz and try again!";
         }
