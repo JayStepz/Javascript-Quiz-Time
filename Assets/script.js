@@ -5,11 +5,8 @@ var beginButton = document.querySelector(".begin-button");
 var resetButton = document.querySelector(".reset-button");
 var viewButton = document.querySelector(".view-scores");
 var quiz = document.querySelector(".quiz-card");
-var timerCount = 3;
+var timerCount = 60;
 var count = 0;
-var ans;
-var corrAns;
-var wrongAns;
 
 var QAs = [
 {
@@ -92,12 +89,12 @@ function displayQA() {
             // Gets correct answer from current question
             var correctAnswer = QAs[count].correctAnswer;
             // Checks if correct or incorrect and displays related text
-            if (choiceAnswer === correctAnswer && count < 4) {
+            if (choiceAnswer === correctAnswer && count < 5) {
                 correct.textContent = "Correct";
                 count++;
                 displayQA();
             } 
-            if (choiceAnswer !== correctAnswer && count < 4) {
+            if (choiceAnswer !== correctAnswer && count < 5) {
                 incorrect.textContent = "Incorrect";
                 count++;
                 timerCount = timerCount - 12;
@@ -106,6 +103,8 @@ function displayQA() {
         });
     }
 }
+
+// function displayScores() {}
 
 // When Begin button is clicked
 function beginQuiz() {
@@ -117,33 +116,44 @@ function beginQuiz() {
 
 function resetQuiz() {
     // Clear and reset timer
-    clearInterval(timerCount);
-    timerCount = 3;
+    clearInterval(timerElement);
+    timerCount = 60;
     timer.textContent = timerCount + " seconds remaining";
 
     // Clears quiz card
     quiz.textContent = "";
 }
 
+// For logging the score and user input
+function finQuiz() {
+    // Stop the timer
+    clearInterval(timerElement);
+    timer.textContent = "You finished!";
+
+    // The score will be the time remaining
+    var score = timerCount;
+    console.log(score);
+
+    // Display Scores page
+    // displayScores();
+};
+
 function timerStart() {
-    timerElement = setInterval(function() {
+    timerElement = setInterval(function(event) {
         timerCount --;
         timer.textContent = timerCount + " seconds remaining";
-        // If any time is left over and there is at least 1 answer...
-        if (timerCount > 0 && ans > 0) {
-            if (timerCount > 0) {
-            clearInterval(timerElement);
-            timer.textContent = "You finished!";
+        // If any time is left over and all questions are answered
+        if (timerCount > 0 && count === QAs.length) {
             finQuiz();
-            }
         }
         // If there is no time left...
-        if (timerCount === 0 && timerCount < 0) {
+        if (timerCount <= 0 && count !== QAs.length) {
             clearInterval(timerElement);
             timer.textContent = "Time is up!";
+            quiz.textContent = "Click Reset Quiz and try again!";
         }
         // Disable Begin button after first click
-        if (timerCount < 3) {
+        if (timerCount <= 60) {
             beginButton.addEventListener("click", function(event) {
                 event.target.disabled = true;
             });
@@ -151,16 +161,18 @@ function timerStart() {
     }, 1000);
 }
 
-// For logging the score and user input
-finQuiz() {
-    // The score will be the time remaining
-    var score = timerCount;
-};
-
 // Establishes the timer box when the page is loaded
 document.addEventListener('DOMContentLoaded', function() {
     timer.textContent = timerCount + " seconds remaining";
 }, false);
 
+// Enables Begin button after clicking Reset Quiz button
+beginButton.addEventListener("click", function(event) {
+    event.target.disabled = false;
+});
+
+// Enables Begin button function
 beginButton.addEventListener("click", beginQuiz);
+
+// Enables Reset Quiz button function
 resetButton.addEventListener("click", resetQuiz);
