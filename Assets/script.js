@@ -1,17 +1,16 @@
-var correct = document.querySelector("correct");
-var lose = document.querySelector("incorrect");
-var timerElement = document.querySelector("timer");
-var beginButton = document.querySelector("begin-button");
-var resetButton = document.querySelector("reset-button");
-var viewButton = document.querySelector("view-scores");
-var quiz = document.querySelector("quiz-card");
-
-var timer;
-var timerCount;
+var correct = document.querySelector(".correct");
+var incorrect = document.querySelector(".incorrect");
+var timer = document.querySelector(".timer");
+var beginButton = document.querySelector(".begin-button");
+var resetButton = document.querySelector(".reset-button");
+var viewButton = document.querySelector(".view-scores");
+var quiz = document.querySelector(".quiz-card");
+var timerCount = 3;
+var count = 0;
 var corrAns;
 
-/* var QAs = [
-    {
+ var QAs = [
+{
     question: "Is JavaScript case-sensitive?",
     answers: {
     a: "Yes",
@@ -33,7 +32,7 @@ var corrAns;
     correctAnswer: "b"
 },
 
- {
+{
     question:"Which one of these is not a data type?",
     answers: {
     a:"String",
@@ -65,40 +64,62 @@ var corrAns;
     },
     correctAnswer: "b"
 }
-]*/
+]
 
-/*function displayQA {
-    var chosenQA = QAs[Math.floor(Math.random() * QAs.length)];
 
-    for (var i = 0; i < QAs.length; i++) {
 
-    }
-}*/
+function displayQA() {
+    quiz.textContent = QAs[count].question;
+
+    QAs[count].answer.forEach(function(answer, index) {
+        var button = document.createElement("button");
+        quiz.appendChild(button);
+        button.setAttribute(id, "a" + index);
+        console.log(button);
+    }); 
+    //(var i = 0; i < 4; i++) {
+        //var button = document.createElement("button");
+        //quiz.appendChild(button);
+        //button.innerHTML = "TEST";
+    //}
+    
+    /*var chosenQA = QAs[Math.floor(Math.random() * QAs.length)];
+
+    QAs.forEach(QAs => {
+        
+    }); (var i = 0; i < QAs.length; i++) {
+
+    }*/
+}
 
 function beginQuiz() {
-    timerTime = 60;
     timerStart()
     displayQA()
 }
 
 function timerStart() {
-    timer = setInterval(function() {
+    timerElement = setInterval(function() {
         timerCount --;
-        timerElement.textContent = timerCount;
-        if (timerCount >= 0) {
+        timer.textContent = timerCount + " seconds remaining";
+
+        /*if (timerCount >= 0) {
             if (timerCount >0) {
-            // Log time as score
+            clearInterval(timerElement);
+            //finQuiz();
             }
-        }
+        }*/
 
         if (timerCount === 0) {
-            clearInterval(timer);
-            // End game
+            clearInterval(timerElement);
+            timer.textContent = "Time is up!";
+            //endQuiz();
         }
     }, 1000);
 }
 
-init();
+//finQuiz();
 
-beginButton.addEventListener("click", beginGame);
-resetButton.addEventListener("click", )
+//endQuiz();
+
+beginButton.addEventListener("click", beginQuiz);
+//resetButton.addEventListener("click", )
