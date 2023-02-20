@@ -12,6 +12,8 @@ var timerTime;
 var didWin = false;
 var corrAns;
 
+var QAs = [QA1, QA2, QA3, QA4, QA5];
+
 const QA1 = {
     question: "Is JavaScript case-sensitive?",
     answers: {
@@ -67,9 +69,17 @@ const QA5 = {
     correctAnswer: "b"
 }
 
-function displayQA {
-    
-}
+/*function displayQA {
+    chosenQA = QAs[Math.floor(Math.random() * QAs.length)];
+
+    for (var i = 0; i < QAs.length; i++) {
+
+    }
+}*/
+
+/*function scoreTable {
+
+}*/
 
 function init() {
     getWins();
@@ -79,8 +89,8 @@ function init() {
 function beginGame() {
     didWin = false;
     timerTime = 60;
-    
     timerStart()
+    displayQA()
 }
 
 function getWins() {
@@ -124,7 +134,8 @@ function timerStart() {
         if (timerTime >= 0) {
             if (didWin && timerTime >0) {
             // Log time as score
-            // Answer win
+            win();
+            
             }
         }
 
@@ -136,3 +147,5 @@ function timerStart() {
 }
 
 beginButton.addEventListener("click", beginGame);
+
+init();
