@@ -2,9 +2,9 @@
 ## About
 This is a JavaScript quiz. This is a timed quiz with 5 basic questions. (It currently does not work to expectation.)
 ## Preview
-[preview image here]
+![JayStepz](./Assets/QuizPreview.JPG "Quiz Preview")
 ## How to Play
-Click this link to go to the quiz. [link here]
+Click this link to go to the quiz. https://jaystepz.github.io/Javascript-Quiz-Time/
 
 When at the page, click the Begin button to start the quiz.
 
