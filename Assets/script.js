@@ -113,7 +113,7 @@ function displayScores() {
     console.log(score);
 }
 
-// function viewScores() {}
+function viewScores() {}
 
 // When Begin button is clicked
 function beginQuiz() {
