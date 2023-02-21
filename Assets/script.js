@@ -113,6 +113,8 @@ function displayScores() {
     console.log(score);
 }
 
+// function viewScores() {}
+
 // When Begin button is clicked
 function beginQuiz() {
     // Timer starts
@@ -200,3 +202,6 @@ beginButton.addEventListener("click", beginQuiz);
 
 // Enables Reset Quiz button function
 resetButton.addEventListener("click", resetQuiz);
+
+// Enables View Scores button function
+viewButton.addEventListener("click", viewScores);
